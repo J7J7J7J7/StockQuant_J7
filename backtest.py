@@ -53,19 +53,15 @@ def execute_trades(df, commission=0.001, Cash = 100000, Position = 0):
 
         elif signal == -1 :  # 卖出
             # 卖出所有持仓
-            sell_quantity = int(position * signal_position) # 卖出的股数量 int
+            sell_quantity = int( position * signal_position) # 卖出的股数量 int
             sell_quantity = (sell_quantity // 100) * 100 # 将卖出的数量转化为手的倍数，即100股作为最小tick
             trade_cash = (price + commission) * sell_quantity # 用于交易的现金(包含手续费)
             position = position - sell_quantity # 减少对应的持仓数量
             cash = cash + trade_cash # 增加对应的现金
             asset = cash + (position * price)
             trade_history.append([row['Date'], 'Sell', price, sell_quantity, cash, position, asset])
+        
+    
 
     # 将交易记录转换为DataFrame并返回
     return pd.DataFrame(trade_history[1:],columns=trade_history[0])
-
-
-
-# 执行回测交易
-trade_history = execute_trades(df)
-
