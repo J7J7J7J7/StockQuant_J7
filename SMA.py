@@ -1,3 +1,5 @@
+#SMA.py
+
 import pandas as pd
 import numpy as np
 
@@ -34,6 +36,7 @@ def sma_strategy(df, short_window=3, long_window=8):
     df = df.dropna(subset=['SMA_short', 'SMA_long'])
     
     df.loc[:, 'Signal_Position'] = 1
+
     # 输出策略信号
     return df[['Date', 'Close', 'Signal', 'Signal_Position']]
     #注：这里的交易仓位默认为1了 以后再优化！！
