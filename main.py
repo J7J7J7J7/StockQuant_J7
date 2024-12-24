@@ -1,9 +1,10 @@
 # main.py
 import tushare as ts
 import pandas as pd
-from SMA import sma_strategy
+from sma import sma_strategy
 from backtest import execute_trades
 import config
+from plot import plot_trading_data
 
 tushare_Token = config.get_tushare_Token() #tushare的API Token
 # 设置Tushare的API Token
@@ -40,6 +41,9 @@ def main():
     # 执行回测
     output_file = f"backtest_{stock_code}_{start_date}_{end_date}.csv"
     trade_history = execute_trades(sma_df, output_file = output_file)  # 传入SMA策略产生的DataFrame
+
+    #调用plot生成回测图表
+    plot_trading_data(trade_history)
 
     # 输出交易结果
     # 输出格式:Date Action Price Size Cash Position Asset

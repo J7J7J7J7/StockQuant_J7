@@ -7,7 +7,7 @@ start_date = '20220101' # 起始回测日期
 end_date = '20231231' # 结束回测日期
 sma_short = '3' # 短期平均线指标
 sma_long = '8' # 长期平均线指标
-tushare_Token = 'your_tushare_Token' #tushare的API Token
+tushare_Token = 'your_tushare_token' #tushare的API Token
 
 
 def get_stock_code():
