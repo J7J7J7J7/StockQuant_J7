@@ -12,7 +12,7 @@ def plot_trading_data(result_df):
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
 
     # 主表：绘制价格（Price）和买卖信号
-    ax1.plot(result_df['Date'], result_df['Price'], label='Price', color='b', marker='o')
+    ax1.plot(result_df['Date'], result_df['Price'], label='Price', color='b')
     buy_signals = result_df[result_df['Action'] == 'Buy']
     ax1.scatter(buy_signals['Date'], buy_signals['Price'] - 2, marker='^', color='r', label='Buy Signal', s=100)  # 买入箭头在价格下方
     sell_signals = result_df[result_df['Action'] == 'Sell']
@@ -24,7 +24,7 @@ def plot_trading_data(result_df):
     ax1.grid(True)
 
     # 子表：绘制资产变化
-    ax2.plot(result_df['Date'], result_df['Asset'], label='Asset', color='g', marker='s')
+    ax2.plot(result_df['Date'], result_df['Asset'], label='Asset', color='g')
 
     ax2.set_title('Asset Over Time', fontsize=16)
     ax2.set_ylabel('Asset Value')
@@ -32,8 +32,10 @@ def plot_trading_data(result_df):
     ax2.grid(True)
 
     # 设置共享的 x 轴（日期）
+    # 在绘制日期轴时，设置显示间隔
     ax2.set_xlabel('Date')
-    plt.xticks(rotation=45)
+    tick_spacing = 10  # 每隔5个数据点显示一个日期标签
+    plt.xticks(result_df['Date'][::tick_spacing], rotation=45)
 
     # 自动调整布局
     plt.tight_layout()

@@ -45,7 +45,8 @@ def execute_trades(df, commission=0.001, Cash = 100000, Position = 0, output_fil
 
         #当交易信号为0时 直接进入下一行数据
         if signal == 0 :
-            continue
+            asset = cash + (position * price)
+            trade_history.append([row['Date'], 'None', price, 0, cash, position, asset])
 
         price = row['Close']
         signal_position = row['Signal_Position']
