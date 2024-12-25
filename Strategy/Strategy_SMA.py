@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 
-def sma_strategy(df, short_window=3, long_window=8):
+def SMA_Strategy(df, short_window=3, long_window=8):
     """
     简单移动平均线策略：3日SMA和8日SMA策略
     参数：

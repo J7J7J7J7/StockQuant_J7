@@ -1,4 +1,4 @@
-requirements： numpy tushare pandas matplotlib
+Requirements： NumPy Tushare Pandas Matplotlib
 
 **请在config文件中修改你自己的个性化指标！！**
 
@@ -8,7 +8,7 @@ requirements： numpy tushare pandas matplotlib
     
     1.使用config文件修改个性化指标
     
-    2.使用SMA均线穿透策略获得交易信号
+    2.选择SMA，BollingerBands等多种策略得到交易信号
     
     3.回测交易某支标的
     

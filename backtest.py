@@ -42,13 +42,13 @@ def execute_trades(df, commission=0.001, Cash = 100000, Position = 0, output_fil
     for _, row in df.iterrows():
 
         signal = row['Signal']  # 策略信号（1为买入，-1为卖出）
-
+        price = row['Close']
+        
         #当交易信号为0时 直接进入下一行数据
         if signal == 0 :
             asset = cash + (position * price)
             trade_history.append([row['Date'], 'None', price, 0, cash, position, asset])
 
-        price = row['Close']
         signal_position = row['Signal_Position']
 
         if signal == 1 :  # 买入
