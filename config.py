@@ -1,11 +1,11 @@
 #config.py
 
-#在下面修改你自己的数据！
+#在下面修改你自己的指标！
 
 stock_code = '000001.SZ'  # 选择股票代码
 start_date = '20220101' # 起始回测日期
-end_date = '20231231' # 结束回测日期
-tushare_Token = 'your tushare Token' #tushare的API Token
+end_date = '20221231' # 结束回测日期
+tushare_Token = 'your_tushare_Token' #tushare的API Token
 strategy = 'Strategy_BollingerBands' #交易策略 选择策略的文件名
 
 #Strategy_SMA

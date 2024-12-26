@@ -15,26 +15,25 @@ def plot_trading_data(result_df):
     # 主表：绘制价格（Price）和买卖信号
     ax1.plot(result_df['Date'], result_df['Price'], label='Price', color='b')
     buy_signals = result_df[result_df['Action'] == 'Buy']
-    ax1.scatter(buy_signals['Date'], buy_signals['Price'] - 2, marker='^', color='r', label='Buy Signal', s=100)  # 买入箭头在价格下方
+    ax1.scatter(buy_signals['Date'], buy_signals['Price'] - 2, marker='^', color='r', label='Buy Signal', s=20)  # 买入箭头在价格下方
     sell_signals = result_df[result_df['Action'] == 'Sell']
-    ax1.scatter(sell_signals['Date'], sell_signals['Price'] + 2, marker='v', color='b', label='Sell Signal', s=100)  # 卖出箭头在价格上方
+    ax1.scatter(sell_signals['Date'], sell_signals['Price'] + 2, marker='v', color='b', label='Sell Signal', s=20)  # 卖出箭头在价格上方
 
-    ax1.set_title(f'Price of {config.stock_code} with {config.strategy}', fontsize=16)
+    ax1.set_title(f'Price of {config.stock_code} with {config.strategy}', fontsize=10)
     ax1.set_ylabel('Price')
     ax1.legend()
-    ax1.grid(True)
+    ax1.grid(False)
 
     # 子表：绘制资产变化
     ax2.plot(result_df['Date'], result_df['Asset'], label='Asset', color='g')
 
-    ax2.set_title(f'Asset From {config.start_date} to {config.end_date}', fontsize=16)
+    ax2.set_title(f'Asset From {config.start_date} to {config.end_date}', fontsize=10)
+    ax2.set_xlabel('Date')
     ax2.set_ylabel('Asset Value')
     ax2.legend()
-    ax2.grid(True)
+    ax2.grid(False)
 
-    # 设置共享的 x 轴（日期）
     # 在绘制日期轴时，设置显示间隔
-    ax2.set_xlabel('Date')
     tick_spacing = 13  # 每隔13个数据点显示一个日期标签
     plt.xticks(result_df['Date'][::tick_spacing], rotation=45)
 
